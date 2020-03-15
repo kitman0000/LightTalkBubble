@@ -40,7 +40,7 @@ namespace LightTalkChatBubble
             this.Width = PARENT_WIDTH + 1;
 
             pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width - pictureBox_profile.Width - 10 - 30;
-            pictureBox_conner.Left = PARENT_WIDTH + pictureBox_body.Left;
+            pictureBox_conner.Left = pictureBox_body.Left + pictureBox_body.Width;
             pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width - 30;
             lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 - 30;
 
