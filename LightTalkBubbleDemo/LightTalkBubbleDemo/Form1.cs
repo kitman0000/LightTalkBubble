@@ -47,5 +47,10 @@ namespace LightTalkBubbleDemo
         {
             chatBox.addVoiceBubble(ChatBox.BubbleSide.RIGHT, System.IO.Directory.GetCurrentDirectory() + @"\temp\testSound2.mp3", "kitman11122222", "110", @"temp\testProfile2.png");
         }
+
+        private void chatBox_profileRightClicked(string senderID, object sender, MouseEventArgs e)
+        {
+            ProfileRightClickMenu.Show(MousePosition.X, MousePosition.Y);
+        }
     }
 }

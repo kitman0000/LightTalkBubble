@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_sendLeftMsg = new System.Windows.Forms.Button();
             this.txt_leftSend = new System.Windows.Forms.TextBox();
             this.txt_rightSend = new System.Windows.Forms.TextBox();
@@ -37,6 +38,11 @@
             this.btn_sendLeftVoice = new System.Windows.Forms.Button();
             this.btn_sendRightVoice = new System.Windows.Forms.Button();
             this.chatBox = new LightTalkChatBox.ChatBox();
+            this.ProfileRightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.taToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.私聊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProfileRightClickMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_sendLeftMsg
@@ -122,6 +128,34 @@
             this.chatBox.Name = "chatBox";
             this.chatBox.Size = new System.Drawing.Size(733, 419);
             this.chatBox.TabIndex = 0;
+            this.chatBox.profileRightClicked += new LightTalkChatBox.ChatBox.ProfileRightClickHandle(this.chatBox_profileRightClicked);
+            // 
+            // ProfileRightClickMenu
+            // 
+            this.ProfileRightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.taToolStripMenuItem,
+            this.私聊ToolStripMenuItem,
+            this.查看ToolStripMenuItem});
+            this.ProfileRightClickMenu.Name = "ProfileRightClickMenu";
+            this.ProfileRightClickMenu.Size = new System.Drawing.Size(125, 70);
+            // 
+            // taToolStripMenuItem
+            // 
+            this.taToolStripMenuItem.Name = "taToolStripMenuItem";
+            this.taToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.taToolStripMenuItem.Text = "查看名片";
+            // 
+            // 私聊ToolStripMenuItem
+            // 
+            this.私聊ToolStripMenuItem.Name = "私聊ToolStripMenuItem";
+            this.私聊ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.私聊ToolStripMenuItem.Text = "@TA";
+            // 
+            // 查看ToolStripMenuItem
+            // 
+            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
+            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.查看ToolStripMenuItem.Text = "发起私聊";
             // 
             // Form1
             // 
@@ -139,6 +173,7 @@
             this.Controls.Add(this.chatBox);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.ProfileRightClickMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +190,10 @@
         private System.Windows.Forms.Button btn_sendRightImg;
         private System.Windows.Forms.Button btn_sendLeftVoice;
         private System.Windows.Forms.Button btn_sendRightVoice;
+        private System.Windows.Forms.ContextMenuStrip ProfileRightClickMenu;
+        private System.Windows.Forms.ToolStripMenuItem taToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 私聊ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
     }
 }
 
