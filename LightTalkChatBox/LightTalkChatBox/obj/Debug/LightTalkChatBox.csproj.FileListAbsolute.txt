@@ -1,0 +1,11 @@
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBox.dll
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBox.pdb
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBubble.dll
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBubble.pdb
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.ChatBox.resources
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csproj.GenerateResource.Cache
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.dll
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.pdb
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csprojResolveAssemblyReference.cache
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\Interop.Shell32.dll
+D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\Interop.WMPLib.dll

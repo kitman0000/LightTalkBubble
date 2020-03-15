@@ -1,0 +1,16 @@
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightChatBubbleDemo.exe.config
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightChatBubbleDemo.exe
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightChatBubbleDemo.pdb
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\CSkin.dll
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightTalkChatBox.dll
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightTalkChatBubble.dll
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\Interop.Shell32.dll
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\Interop.WMPLib.dll
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightTalkChatBox.pdb
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\bin\Debug\LightTalkChatBubble.pdb
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\obj\Debug\LightTalkBubbleDemo.csprojResolveAssemblyReference.cache
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\obj\Debug\LightTalkBubbleDemo.Form1.resources
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\obj\Debug\LightChatBubbleDemo.Properties.Resources.resources
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\obj\Debug\LightTalkBubbleDemo.csproj.GenerateResource.Cache
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\obj\Debug\LightChatBubbleDemo.exe
+D:\代码\测试程序\LightChatBubbleDemo\LightChatBubbleDemo\obj\Debug\LightChatBubbleDemo.pdb
