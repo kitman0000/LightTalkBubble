@@ -18,6 +18,7 @@ namespace LightTalkBubbleDemo
             InitializeComponent();
         }
 
+
         private void btn_sendLeftMsg_Click(object sender, EventArgs e)
         {
             chatBox.addChatBubble(ChatBox.BubbleSide.LEFT, txt_leftSend.Text, "kitman543210", "110", @"temp\testProfile1.png");

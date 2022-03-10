@@ -50,7 +50,7 @@
             this.pictureBox_profile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_profile.TabIndex = 14;
             this.pictureBox_profile.TabStop = false;
-            this.pictureBox_profile.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_profile_MouseClick);
+            this.pictureBox_profile.MouseClick += new System.Windows.Forms.MouseEventHandler(this.on_profile_picture_box_clicked);
             // 
             // lbl_sender
             // 

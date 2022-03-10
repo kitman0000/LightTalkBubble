@@ -12,20 +12,17 @@ using System.Text.RegularExpressions;
 
 namespace LightTalkChatBubble
 {
-    public partial class RightVoiceBubble : UserControl,IVoiceBubble
+    public partial class RightVoiceBubble : BubbleBase, IVoiceBubble
     {
-        public delegate void ProfileRightClickHandle(string senderID, object sender, MouseEventArgs e);
-        public event ProfileRightClickHandle profileRightClicked;
-
-        private string senderID;
 
         private string recordPath;
 
-        const int PARENT_WIDTH = 734;
+        readonly int PARENT_WIDTH = 734;
 
-        public RightVoiceBubble()
+        public RightVoiceBubble(Control parent):base(parent)
         {
             InitializeComponent();
+            PARENT_WIDTH = parent.Width;
         }
 
         public void setRecord(string recordPath, string sender, string senderID, string profileImgPath)
@@ -72,14 +69,6 @@ namespace LightTalkChatBubble
         private void pictureBox_img_Click(object sender, EventArgs e)
         {
             WMPHelper.play(this.recordPath,pictureBox_img);
-        }
-
-        private void pictureBox_profile_MouseClick(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Right)
-            {
-                profileRightClicked(this.senderID, sender, e);
-            }
         }
 
         private void RightVoiceBubble_Load(object sender, EventArgs e)

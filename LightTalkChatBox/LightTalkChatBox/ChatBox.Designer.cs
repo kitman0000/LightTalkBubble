@@ -36,25 +36,27 @@
             this.chatPanel.AutoScroll = true;
             this.chatPanel.BackColor = System.Drawing.Color.White;
             this.chatPanel.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.chatPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chatPanel.DownBack = null;
-            this.chatPanel.Location = new System.Drawing.Point(-1, 0);
+            this.chatPanel.Location = new System.Drawing.Point(0, 0);
+            this.chatPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chatPanel.MouseBack = null;
             this.chatPanel.Name = "chatPanel";
             this.chatPanel.NormlBack = null;
-            this.chatPanel.Size = new System.Drawing.Size(730, 419);
+            this.chatPanel.Size = new System.Drawing.Size(1098, 628);
             this.chatPanel.TabIndex = 0;
             this.chatPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.chatPanel_Paint);
             // 
             // ChatBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.chatPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ChatBox";
-            this.Size = new System.Drawing.Size(732, 419);
+            this.Size = new System.Drawing.Size(1098, 628);
             this.Load += new System.EventHandler(this.ChatBox_Load);
-            this.SizeChanged += new System.EventHandler(this.ChatBox_SizeChanged);
             this.ResumeLayout(false);
 
         }

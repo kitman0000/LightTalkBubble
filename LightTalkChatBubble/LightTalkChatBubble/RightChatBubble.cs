@@ -10,18 +10,14 @@ using System.Text.RegularExpressions;
 
 namespace LightTalkChatBubble
 {
-    public partial class RightChatBubble : UserControl,IChatBubble
+    public partial class RightChatBubble : BubbleBase, IChatBubble
     {
-        public delegate void ProfileRightClickHandle(string senderID,object sender, MouseEventArgs e);
-        public event ProfileRightClickHandle profileRightClicked;
+        readonly int PARENT_WIDTH = 734;
 
-        const int PARENT_WIDTH = 734;
-
-        private string senderID;
-
-        public RightChatBubble()
+        public RightChatBubble(Control parent):base(parent)
         {
             InitializeComponent();
+            PARENT_WIDTH=parent.Width;
         }
 
         /// <summary>
@@ -136,14 +132,6 @@ namespace LightTalkChatBubble
             catch (Exception ex)
             {
                 pictureBox_profile.Load("icons/defaultProfile.png");
-            }
-        }
-
-        private void pictureBox_profile_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                profileRightClicked(this.senderID,sender,e);
             }
         }
 
