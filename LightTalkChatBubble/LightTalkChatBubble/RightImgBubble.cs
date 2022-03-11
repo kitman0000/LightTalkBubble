@@ -66,10 +66,10 @@ namespace LightTalkChatBubble
             pictureBox_body.Width = pictureBox_img.Width + 2;
 
 
-            pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width - pictureBox_profile.Width - 10 - 30;
+            pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width - pictureBox_profile.Width - 10-30 ;
             pictureBox_conner.Left = pictureBox_body.Width + pictureBox_body.Left;
-            pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width - 30;
-            lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 - 30;
+            pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width -30;
+            lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 -30;
 
             pictureBox_img.Left = pictureBox_body.Left + 1;
         }

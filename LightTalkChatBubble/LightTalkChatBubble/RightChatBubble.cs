@@ -14,10 +14,10 @@ namespace LightTalkChatBubble
     {
         readonly int PARENT_WIDTH = 734;
 
-        public RightChatBubble(Control parent):base(parent)
+        public RightChatBubble(Control parent) : base(parent)
         {
             InitializeComponent();
-            PARENT_WIDTH=parent.Width;
+            PARENT_WIDTH = parent.Width;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace LightTalkChatBubble
             lbl_sender.Top = 6;
         }
 
-        public void setText(string msg,string sender,string senderID,string profileImgPath)
+        public void setText(string msg, string sender, string senderID, string profileImgPath)
         {
             //init(); // 第二次调用界面可能出现bug，先恢复到初始化状态
 
@@ -56,7 +56,7 @@ namespace LightTalkChatBubble
             float lineLength = 0;
             float totalLineLength = 0;
 
-            foreach(string line in Regex.Split(msg,"\r\n"))
+            foreach (string line in Regex.Split(msg, "\r\n"))
             {
                 float currentLineLength = 0;
 
@@ -72,7 +72,7 @@ namespace LightTalkChatBubble
                     }
                 }
 
-                if(currentLineLength > lineLength)
+                if (currentLineLength > lineLength)
                 {
                     lineLength = currentLineLength;
                 }
@@ -96,12 +96,12 @@ namespace LightTalkChatBubble
             if (lineToAdd != 0)
             {
                 this.Height = (int)(this.Font.Size * 1.7f) * (lineToAdd + 3);
-                pictureBox_body.Height = this.Height +  pictureBox_body.Top;
+                pictureBox_body.Height = this.Height + pictureBox_body.Top;
             }
-            txt_Msg.Height = pictureBox_body.Height - (txt_Msg.Top -pictureBox_body.Top);
+            txt_Msg.Height = pictureBox_body.Height - (txt_Msg.Top - pictureBox_body.Top);
 
             // 补上头像的高度
-            this.Height += ( pictureBox_profile.Height - 39);
+            this.Height += (pictureBox_profile.Height - 39);
 
             txt_Msg.Width = (int)lineLength + 10;
             txt_Msg.Text = msg;
@@ -110,10 +110,10 @@ namespace LightTalkChatBubble
 
             this.Width = PARENT_WIDTH - 10;
 
-            pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width  - pictureBox_profile.Width - 10 -30;
-            pictureBox_conner.Left = pictureBox_body.Width + pictureBox_body.Left ;
-            pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width -30;
-            lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 -30;
+            pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width - pictureBox_profile.Width - 10 - 30;
+            pictureBox_conner.Left = pictureBox_body.Width + pictureBox_body.Left;
+            pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width - 30;
+            lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 - 30;
 
 
             txt_Msg.Left = pictureBox_body.Left + 10;

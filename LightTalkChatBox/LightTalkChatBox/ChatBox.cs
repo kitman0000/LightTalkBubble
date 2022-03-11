@@ -26,18 +26,29 @@ namespace LightTalkChatBox
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            _src_width = this.ParentForm.Width;
+            _parent_form_width = this.ParentForm.Width;
             this.ParentForm.ResizeEnd += this.ParentForm_ResizeEnd;
         }
 
-        private volatile int _src_width;
+        /// <summary>
+        /// 记录当前窗体的宽度
+        /// </summary>
+        private volatile int _parent_form_width;
+        /// <summary>
+        /// 记录本该置于右侧的Bubble,在窗体的宽度改变后更新这些bubble的位置
+        /// </summary>
         private readonly ConcurrentBag<BubbleBase> _right_items = new ConcurrentBag<BubbleBase>();
 
+        /// <summary>
+        /// 窗体的Size发生改变后更新右侧bubble的位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ParentForm_ResizeEnd(object sender, EventArgs e)
         {
             int current = this.ParentForm.Width;
-            int diff = _src_width - current;
-            _src_width = current;
+            int diff = _parent_form_width - current;
+            _parent_form_width = current;
             foreach (BubbleBase item in _right_items)
             {
                 Point point = item.Location;
@@ -51,7 +62,7 @@ namespace LightTalkChatBox
             LEFT, RIGHT
         }
 
-        private void add_chat_bubble<T>(BubbleBase bubble,BubbleSide side,Action<T> action)where T:class
+        private void add_bubble<T>(BubbleBase bubble,BubbleSide side,Action<T> action)where T:class
         {
             if (side == BubbleSide.RIGHT)
             {
@@ -72,7 +83,6 @@ namespace LightTalkChatBox
 
         public void addChatBubble(BubbleSide bubbleSide, string msg, string sender, string senderID, string profileImgPath)
         {
-
             BubbleBase bubble = null;
 
             if (bubbleSide == BubbleSide.LEFT)
@@ -84,7 +94,7 @@ namespace LightTalkChatBox
                 bubble = new RightChatBubble(this);
             }
 
-            add_chat_bubble<IChatBubble>(bubble, bubbleSide,(b) => b.setText(msg, sender, senderID, profileImgPath));
+            add_bubble<IChatBubble>(bubble, bubbleSide,(b) => b.setText(msg, sender, senderID, profileImgPath));
 
         }
 
@@ -100,7 +110,7 @@ namespace LightTalkChatBox
                 bubble = new RightImgBubble(this);
             }
 
-            add_chat_bubble<IImgBubble>(bubble, bubbleSide, (b) => b.setImg(imgPath, sender, senderID, profileImgPath));
+            add_bubble<IImgBubble>(bubble, bubbleSide, (b) => b.setImg(imgPath, sender, senderID, profileImgPath));
         }
 
         public void addVoiceBubble(BubbleSide bubbleSide, string recordPath, string sender, string senderID, string profileImgPath)
@@ -116,7 +126,7 @@ namespace LightTalkChatBox
                 bubble = new RightVoiceBubble(this);
             }
 
-            add_chat_bubble<IVoiceBubble>(bubble, bubbleSide, (b) => b.setRecord(recordPath, sender, senderID, profileImgPath));
+            add_bubble<IVoiceBubble>(bubble, bubbleSide, (b) => b.setRecord(recordPath, sender, senderID, profileImgPath));
 
         }
 
