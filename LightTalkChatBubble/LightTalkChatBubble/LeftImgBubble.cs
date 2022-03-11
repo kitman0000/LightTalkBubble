@@ -9,14 +9,9 @@ using System.Windows.Forms;
 
 namespace LightTalkChatBubble
 {
-    public partial class LeftImgBubble : UserControl,IImgBubble
+    public partial class LeftImgBubble : BubbleBase, IImgBubble
     {
-        private string senderID;
-
-        public delegate void ProfileRightClickHandle(string senderID, object sender, MouseEventArgs e);
-        public event ProfileRightClickHandle profileRightClicked;
-
-        public LeftImgBubble()
+        public LeftImgBubble(Control parent):base(parent)
         {
             InitializeComponent();
         }
@@ -65,14 +60,6 @@ namespace LightTalkChatBubble
             }
 
             pictureBox_body.Width = this.Width;
-        }
-
-        private void pictureBox_profile_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                profileRightClicked(this.senderID, sender, e);
-            }
         }
     }
 }

@@ -9,18 +9,14 @@ using System.Windows.Forms;
 
 namespace LightTalkChatBubble
 {
-    public partial class RightImgBubble : UserControl, IImgBubble
+    public partial class RightImgBubble : BubbleBase, IImgBubble
     {
-        private string senderID;
+        readonly int PARENT_WIDTH = 734;
 
-        public delegate void ProfileRightClickHandle(string senderID, object sender, MouseEventArgs e);
-        public event ProfileRightClickHandle profileRightClicked;
-
-        const int PARENT_WIDTH = 734;
-
-        public RightImgBubble()
+        public RightImgBubble(Control parent):base(parent)
         {
             InitializeComponent();
+            PARENT_WIDTH = parent.Width;
         }
 
         public void setImg(string imgPath, string sender, string senderID, string profileImgPath)
@@ -70,20 +66,12 @@ namespace LightTalkChatBubble
             pictureBox_body.Width = pictureBox_img.Width + 2;
 
 
-            pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width - pictureBox_profile.Width - 10 - 30;
+            pictureBox_body.Left = PARENT_WIDTH - pictureBox_body.Width - pictureBox_conner.Width - pictureBox_profile.Width - 10-30 ;
             pictureBox_conner.Left = pictureBox_body.Width + pictureBox_body.Left;
-            pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width - 30;
-            lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 - 30;
+            pictureBox_profile.Left = PARENT_WIDTH - pictureBox_profile.Width -30;
+            lbl_sender.Left = PARENT_WIDTH - lbl_sender.Width - pictureBox_profile.Width - 10 -30;
 
             pictureBox_img.Left = pictureBox_body.Left + 1;
-        }
-
-        private void pictureBox_profile_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                profileRightClicked(this.senderID, sender, e);
-            }
         }
 
     }

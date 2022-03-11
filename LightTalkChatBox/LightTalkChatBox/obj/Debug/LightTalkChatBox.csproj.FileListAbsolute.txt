@@ -9,3 +9,16 @@ D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChat
 D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csprojResolveAssemblyReference.cache
 D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\Interop.Shell32.dll
 D:\代码\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\Interop.WMPLib.dll
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csproj.AssemblyReference.cache
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.ChatBox.resources
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csproj.GenerateResource.cache
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csproj.CoreCompileInputs.cache
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.dll
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.pdb
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBox.dll
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBox.pdb
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBubble.dll
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\bin\Debug\Interop.Shell32.dll
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\bin\Debug\Interop.WMPLib.dll
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBubble.pdb
+C:\Users\me\Source\Repos\LightTalkBubble\LightTalkChatBox\LightTalkChatBox\obj\Debug\LightTalkChatBox.csproj.CopyComplete

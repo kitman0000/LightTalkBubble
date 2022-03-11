@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,7 +39,10 @@
     </Reference>
     <Reference Include="LightTalkChatBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\项目工程\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBox.dll</HintPath>
+      <HintPath>..\..\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBox.dll</HintPath>
+    </Reference>
+    <Reference Include="LightTalkChatBubble">
+      <HintPath>..\..\LightTalkChatBox\LightTalkChatBox\bin\Debug\LightTalkChatBubble.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,6 +77,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -116,7 +116,7 @@ namespace LightTalkChatBubble
         public void setMargin(RichTextBox rtb, int left,int right,int top,int buttom)
         {
             this.rtb = rtb;
-
+            
             Rect rect;
             rect.Left = left;
             rect.Top = top;

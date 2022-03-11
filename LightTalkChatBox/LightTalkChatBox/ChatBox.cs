@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LightTalkChatBubble;
 using System.Runtime.InteropServices;
+using LightTalkChatBubble;
+using System.Collections.Concurrent;
 
 namespace LightTalkChatBox
 {
@@ -22,91 +23,114 @@ namespace LightTalkChatBox
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            _parent_form_width = this.ParentForm.Width;
+            this.ParentForm.ResizeEnd += this.ParentForm_ResizeEnd;
+        }
+
+        /// <summary>
+        /// 记录当前窗体的宽度
+        /// </summary>
+        private volatile int _parent_form_width;
+        /// <summary>
+        /// 记录本该置于右侧的Bubble,在窗体的宽度改变后更新这些bubble的位置
+        /// </summary>
+        private readonly ConcurrentBag<BubbleBase> _right_items = new ConcurrentBag<BubbleBase>();
+
+        /// <summary>
+        /// 窗体的Size发生改变后更新右侧bubble的位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ParentForm_ResizeEnd(object sender, EventArgs e)
+        {
+            int current = this.ParentForm.Width;
+            int diff = _parent_form_width - current;
+            _parent_form_width = current;
+            foreach (BubbleBase item in _right_items)
+            {
+                Point point = item.Location;
+                Point newPoint = new Point(point.X - diff, point.Y);
+                item.Location = newPoint;
+            }
+        }
+
         public enum BubbleSide
         {
-            LEFT,RIGHT
+            LEFT, RIGHT
         }
 
-        public void addChatBubble(BubbleSide bubbleSide,string msg,string sender,string senderID,string profileImgPath)
+        private void add_bubble<T>(BubbleBase bubble,BubbleSide side,Action<T> action)where T:class
         {
-
-            IChatBubble bubble = null;
-
-            if(bubbleSide == BubbleSide.LEFT)
+            if (side == BubbleSide.RIGHT)
             {
-                bubble = new LeftChatBubble();
-                (bubble as LeftChatBubble).profileRightClicked += ChatBox_profileRightClicked;
+                _right_items.Add(bubble);
             }
-            else if(bubbleSide == BubbleSide.RIGHT)
-            {
-                bubble = new RightChatBubble();
-                (bubble as RightChatBubble).profileRightClicked += ChatBox_profileRightClicked;
-            }
+
+            bubble.OnProfileRightClickHandle += ChatBox_profileRightClicked;
 
             if (chatPanel.Controls.Count != 0)
-                (bubble as Control).Top = chatPanel.Controls[chatPanel.Controls.Count - 1].Top + chatPanel.Controls[chatPanel.Controls.Count - 1].Height;
+                bubble.Top = chatPanel.Controls[chatPanel.Controls.Count - 1].Top + chatPanel.Controls[chatPanel.Controls.Count - 1].Height;
 
-            chatPanel.Controls.Add(bubble as Control);
+            chatPanel.Controls.Add(bubble);
 
-            bubble.setText(msg, sender,senderID,profileImgPath);
+            action.Invoke(bubble as T);
 
-            chatPanel.ScrollControlIntoView(bubble as Control);
+            chatPanel.ScrollControlIntoView(bubble);
         }
 
-        public void addImgBubble(BubbleSide bubbleSide,string imgPath, string sender, string senderID, string profileImgPath)
+        public void addChatBubble(BubbleSide bubbleSide, string msg, string sender, string senderID, string profileImgPath)
         {
-            IImgBubble imgBubble = null;
+            BubbleBase bubble = null;
 
             if (bubbleSide == BubbleSide.LEFT)
             {
-                imgBubble = new LeftImgBubble();
-
-                (imgBubble as LeftImgBubble).profileRightClicked += ChatBox_profileRightClicked;
+                bubble = new LeftChatBubble(this);
             }
             else if (bubbleSide == BubbleSide.RIGHT)
             {
-                imgBubble = new RightImgBubble();
-                (imgBubble as RightImgBubble).profileRightClicked += ChatBox_profileRightClicked;
+                bubble = new RightChatBubble(this);
             }
 
-            if (chatPanel.Controls.Count != 0)
-                (imgBubble as Control).Top = chatPanel.Controls[chatPanel.Controls.Count - 1].Top + chatPanel.Controls[chatPanel.Controls.Count - 1].Height;
+            add_bubble<IChatBubble>(bubble, bubbleSide,(b) => b.setText(msg, sender, senderID, profileImgPath));
 
-            chatPanel.Controls.Add(imgBubble as Control);
+        }
 
-            imgBubble.setImg(imgPath, sender, senderID, profileImgPath);
+        public void addImgBubble(BubbleSide bubbleSide, string imgPath, string sender, string senderID, string profileImgPath)
+        {
+            BubbleBase bubble = null;
+            if (bubbleSide == BubbleSide.LEFT)
+            {
+                bubble = new LeftImgBubble(this);
+            }
+            else if (bubbleSide == BubbleSide.RIGHT)
+            {
+                bubble = new RightImgBubble(this);
+            }
 
-            chatPanel.ScrollControlIntoView(imgBubble as Control);
+            add_bubble<IImgBubble>(bubble, bubbleSide, (b) => b.setImg(imgPath, sender, senderID, profileImgPath));
         }
 
         public void addVoiceBubble(BubbleSide bubbleSide, string recordPath, string sender, string senderID, string profileImgPath)
         {
-            IVoiceBubble voiceBubble = null;
+            BubbleBase bubble = null;
 
             if (bubbleSide == BubbleSide.LEFT)
             {
-                voiceBubble = new LeftVoiceBubble();
-
-                (voiceBubble as LeftVoiceBubble).profileRightClicked += ChatBox_profileRightClicked;
+                bubble = new LeftVoiceBubble(this);
             }
             else if (bubbleSide == BubbleSide.RIGHT)
             {
-                voiceBubble = new RightVoiceBubble();
-                (voiceBubble as RightVoiceBubble).profileRightClicked += ChatBox_profileRightClicked;
+                bubble = new RightVoiceBubble(this);
             }
 
-            if (chatPanel.Controls.Count != 0)
-                (voiceBubble as Control).Top = chatPanel.Controls[chatPanel.Controls.Count - 1].Top + chatPanel.Controls[chatPanel.Controls.Count - 1].Height;
-
-            chatPanel.Controls.Add(voiceBubble as Control);
-
-            voiceBubble.setRecord(recordPath, sender, senderID, profileImgPath);
-
-            chatPanel.ScrollControlIntoView(voiceBubble as Control);
+            add_bubble<IVoiceBubble>(bubble, bubbleSide, (b) => b.setRecord(recordPath, sender, senderID, profileImgPath));
 
         }
 
-        private void ChatBox_profileRightClicked(string senderID,object sender, MouseEventArgs e)
+        private void ChatBox_profileRightClicked(string senderID, object sender, MouseEventArgs e)
         {
             profileRightClicked(senderID, sender, e);
         }
@@ -126,11 +150,6 @@ namespace LightTalkChatBox
         {
             Control _Control = (Control)sender;
             ShowScrollBar(_Control.Handle, 0, 0);
-        }
-
-        private void ChatBox_SizeChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
